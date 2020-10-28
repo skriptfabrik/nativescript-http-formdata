@@ -44,20 +44,8 @@ export class TNSHttpFormData extends Common
                 let callback = new okhttp3.Callback({
                     // all server errors will arrive here
                     onResponse: (call, response) => {
-                        let body;
-                        try {
-                            body = JSON.parse(response.body().string());
-                        } catch (e) {
-                            body = response.body().string();
-                        }
 
-                        let customResponse: TNSHttpFormDataResponse = {
-                            headers: response.headers().toString(),
-                            statusCode: response.code(),
-                            statusMessage: response.message(),
-                            body: body
-                        };
-                        resolve(customResponse);
+                        resolve();
                     },
                     // incase of timeout etc, this will be called
                     onFailure: (call, response) => {
